@@ -1,12 +1,41 @@
 <!DOCTYPE html>
-<html lang="en-US">
-<script src="../angular.min.js"></script>
+<html>
+<script src= "../angular.min.js"></script>
 <body>
 
-<div ng-app="">
- 	<p>Name : <input type="text" ng-model="name"></p>
- 	<h1>Hello {{name}}</h1>
+<div ng-app="myApp" ng-controller="myCtrl">
+<ul>
+  <li ng-repeat="x in names">
+    {{ x.name + ' ' + x.count }}
+  </li>
+</ul>
+
 </div>
+
+<script>
+angular.module('myApp', []).controller('myCtrl', function($scope) {
+	
+	var x = [
+        {name:'john',count:10},
+        {name:'paul',count:15},
+        {name:'paul',count:25},
+        {name:'sam',count:34},
+        {name:'john',count:24}
+    ];
+    
+   var container = function(){}
+   var app = new container();
+
+   app.formatObj = function(x){
+   	var obj = x.length;
+   	return obj;
+   }
+
+
+    $scope.names = app.formatObj();
+
+});
+</script>
 
 </body>
 </html>
